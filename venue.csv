@@ -1,0 +1,31 @@
+venue_id,venue_name,venue_place,venue_capacity,venue_location,price_factor
+1,Grand Hall,City Center Ballroom,500,Downtown Plaza,1.5
+2,Sapphire Garden,Marina Events Center,300,Seaside Waterfront,1.75
+3,Royal Pavilion,Hillside Banquet Hall,250,Mountain View,1.2
+4,Crystal Palace,Harbor View Pavilion,400,Coastal Resort,1.6
+5,Golden Terrace,Sunset Banquet Gardens,200,Scenic Bluffs,1.4
+6,Silver Oak Manor,Valley Vineyard Estates,150,Wine Country,1.3
+7,Harmony Haven,The Meadows Event Center,350,Countryside Retreat,1.8
+8,Emerald Oasis,Lakeside Pavilion,300,Tranquil Lake Park,1.65
+9,Diamond Plaza,Metropolitan Grand Plaza,450,Urban Center,1.7
+10,Opulent Mansion,Historic Estate House,100,Old Town District,2.0
+11,Celestial Ballroom,Skyline Tower Hotel,350,City Skyline,1.45
+12,Regal Gardens,Botanical Gardens,200,Green Valley,1.25
+13,Charming Courtyard,Colonial Courtyard,150,Charming Village,1.15
+14,Enchanted Woods,Whispering Woods Lodge,300,Enchanted Forest,1.55
+15,Harbor Lights,Seaside Pier Pavilion,250,Beachfront,1.35
+16,Cascading Falls,Riverfront Lodge,175,Nature Preserve,1.1
+17,Crystal Waters,Beachside Resort,400,Coastal Paradise,1.6
+18,Garden Vista,Parkside Events Center,200,Urban Park,1.3
+19,Mountain View Lodge,Alpine Lodge,150,Mountain Retreat,1.25
+20,Sunset Terrace,Seaview Rooftop,100,Ocean View,1.9
+21,Rustic Barn,Country Barn Venue,250,Country Side,1.4
+22,Serenity Springs,Nature Retreat Center,300,Tranquil Valley,1.7
+23,Vintage Charm,Historic Manor House,150,Historic District,1.2
+24,Orchid Pavilion,Botanical Garden Pavilion,200,Floral Oasis,1.5
+25,The Grand Oak,Manor House Estate,350,Country Estate,1.8
+26,Skyline Loft,Urban Loft Venue,200,City Center,1.4
+27,Meadow Breeze,Open-air Meadow,100,Scenic Countryside,1.2
+28,Ivory Tower,Elegant Tower Ballroom,300,Grand City,1.6
+29,Sapphire Sands,Beach Resort Pavilion,250,Seaside Getaway,1.5
+30,Tranquil Haven,Riverfront Retreat,150,Picturesque Riverbank,1.3

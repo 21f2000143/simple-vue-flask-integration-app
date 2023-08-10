@@ -1,0 +1,23 @@
+<h1>Monthly Report of Users</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Venue Name</th>
+            <th>Show Name</th>
+            <th>no_seats</th>
+            <th>book_time</th>
+            <th>amount_paid</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in result %}
+        <tr>
+            <th>{{item['Venue Name']}}</th>
+            <th>{{item['Show Name']}}</th>
+            <th>{{item['no_seats']}}</th>
+            <th>{{item['book_time']}}</th>
+            <th>{{item['amount_paid']}}</th>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>

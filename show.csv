@@ -1,0 +1,31 @@
+show_id,show_name,img_name,show_likes,show_tag,show_price,show_stime,show_etime
+1,The Broadway Revue,broadway_revue.jpg,4.5,Musical,45.00,2023-09-15 19:30:00,2023-09-15 22:00:00
+2,Comedy Night Extravaganza,comedy_night.jpg,4.2,Comedy,25.00,2023-10-20 20:00:00,2023-10-20 22:30:00
+3,Tech Innovators Summit,tech_summit.jpg,4.8,Conference,150.00,2023-08-31 09:00:00,2023-08-31 17:00:00
+4,Artistic Expressions Gala,art_gala.jpg,4.6,Art,30.00,2023-11-05 18:00:00,2023-11-05 21:00:00
+5,Fitness Fusion Festival,fitness_festival.jpg,4.4,Fitness,20.00,2023-09-22 10:00:00,2023-09-22 14:00:00
+6,Fashion Forward Showcase,fashion_show.jpg,4.7,Fashion,40.00,2023-10-10 16:30:00,2023-10-10 19:30:00
+7,Charity Auction Soiree,charity_auction.jpg,4.3,Charity,60.00,2023-09-07 17:00:00,2023-09-07 20:00:00
+8,Gourmet Tastes Festival,food_wine_festival.jpg,4.9,Food & Drink,55.00,2023-11-15 12:00:00,2023-11-15 18:00:00
+9,Innovation Launchpad,innovation_launch.jpg,4.8,Technology,75.00,2023-09-30 10:00:00,2023-09-30 16:00:00
+10,Stand-Up Comedy Show,standup_comedy.jpg,4.5,Comedy,20.00,2023-10-12 19:00:00,2023-10-12 21:00:00
+11,Scientific Discoveries Symposium,sci_symposium.jpg,4.7,Science,35.00,2023-10-05 09:30:00,2023-10-05 17:30:00
+12,Outdoor Movie Night,movie_night.jpg,4.3,Entertainment,10.00,2023-08-25 20:30:00,2023-08-25 23:00:00
+13,Health & Wellness Expo,wellness_expo.jpg,4.6,Health & Wellness,15.00,2023-09-17 09:00:00,2023-09-17 15:00:00
+14,Artisan Crafts Fair,crafts_fair.jpg,4.4,Art & Craft,10.00,2023-11-08 11:00:00,2023-11-08 16:00:00
+15,Youth Sports Championship,sports_championship.jpg,4.9,Sports,5.00,2023-10-28 14:00:00,2023-10-28 18:00:00
+16,Green Living Workshop,green_workshop.jpg,4.6,Environment,25.00,2023-09-29 13:00:00,2023-09-29 16:00:00
+17,Culinary Delights Experience,culinary_experience.jpg,4.8,Culinary,50.00,2023-08-12 18:00:00,2023-08-12 21:30:00
+18,Design Thinking Seminar,design_seminar.jpg,4.7,Design,30.00,2023-09-05 10:00:00,2023-09-05 13:00:00
+19,Book Lovers Meetup,book_meetup.jpg,4.5,Literature,10.00,2023-11-18 15:00:00,2023-11-18 17:00:00
+20,Robotics Expo Showcase,robotics_expo.jpg,4.9,Technology,40.00,2023-10-17 11:00:00,2023-10-17 16:00:00
+21,Dance Fusion Performance,dance_performance.jpg,4.6,Dance,15.00,2023-09-19 17:30:00,2023-09-19 20:30:00
+22,Travel Stories Unplugged,travel_stories.jpg,4.7,Travel,10.00,2023-11-01 18:00:00,2023-11-01 20:00:00
+23,Leadership Insights Summit,leadership_summit.jpg,4.5,Leadership,60.00,2023-10-08 09:00:00,2023-10-08 17:00:00
+24,Farm-to-Table Experience,farm_to_table.jpg,4.8,Food & Drink,65.00,2023-09-12 19:00:00,2023-09-12 22:00:00
+25,Creative Writing Workshop,creative_writing.jpg,4.6,Writing,20.00,2023-08-28 15:00:00,2023-08-28 18:00:00
+26,Photography Exhibition,photography_exhibition.jpg,4.9,Art,30.00,2023-10-25 12:00:00,2023-10-25 17:00:00
+27,Innovation Forum,innovation_forum.jpg,4.7,Technology,50.00,2023-09-02 10:30:00,2023-09-02 15:30:00
+28,Meditation Retreat,meditation_retreat.jpg,4.6,Wellness,40.00,2023-11-10 07:00:00,2023-11-10 12:00:00
+29,Language Learning Expo,language_expo.jpg,4.8,Education,15.00,2023-09-25 10:00:00,2023-09-25 14:00:00
+30,Family Fun Carnival,family_carnival.jpg,4.5,Entertainment,10.00,2023-10-15 13:00:00,2023-10-15 18:00:00

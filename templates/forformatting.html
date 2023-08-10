@@ -1,0 +1,39 @@
+<div class="card p-3 justify-content-center">
+    <div v-if="alertMessage" class="alert">
+      {{ alertMessage }}
+      <span class="close" @click="dismissAlert">&times;</span>
+    </div>
+    <span class="close" @click="closeForm">&times;</span>
+    <p class="h3">Editing Show</p>
+    <form class="row g-3" @submit.prevent="onSubmit">
+      <div class="row-md-6">
+        <div class="input-group">
+          <input type="text" v-model="show_name" class="form-control"  required>
+        </div>
+        <br>
+        <div class="row-md-6">
+          <input type="text" v-model="show_likes" class="form-control" required>
+        </div>
+        <br>
+        <div class="row-md-6">
+          <input type="text" v-model="show_tag" class="form-control" required>
+        </div>
+        <br>
+        <div class="row-md-6">
+          <input type="number" v-model="show_price" class="form-control" required>
+        </div>
+        <br>
+        <div class="row-md-6">
+          <input type="time" v-model="show_stime" class="form-control" required>
+        </div>
+        <br>
+        <div class="row-md-6">
+          <input type="time" v-model="show_etime" class="form-control" required>
+        </div>
+        <br>
+        <div class="row-12 d-flex justify-content-center">
+          <button class="btn btn-outline-secondary" type="submit">Edit</button>
+        </div>
+      </div>
+    </form>
+</div>

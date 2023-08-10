@@ -1,0 +1,5 @@
+System will automatically show the latest added shows: not implemented
+Dynamic Pricing (optional) - Show prices can go up/down depending upon the popularity: implemented
+likes button: not implemented
+There is redundancy in the show table: not fixed
+alert in the the login, signup, password change page: not implemented

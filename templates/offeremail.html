@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Offers</title>
+  <style>
+    /* Styles for the email template */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #007BFF;
+    }
+    .movie-offer {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      background-color: #f9f9f9;
+    }
+    .movie-title {
+      font-size: 18px;
+      color: #007BFF;
+    }
+    .movie-description {
+      margin-top: 10px;
+      color: #333;
+    }
+    .cta-button {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #007BFF;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Exciting Movie Offers!</h1>
+    <!-- Movie Offer 1 -->
+    {% for show in topshows %}
+    <div class="movie-offer">
+      <h2 class="movie-title">{{show.show_name}}</h2>
+      <p class="movie-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse rutrum tincidunt mi, eget tristique magna pellentesque vel.</p>
+      <a class="cta-button" href="https://in.bookmyshow.com/explore/home/chennai" target="_blank">Book Now</a>
+    </div>
+    {% endfor %}
+    <p>Click on the link to login and book ticket now for your favorite show. Hurry Up!</p>
+    <p>Happy watching!</p>
+    <footer>&copy;IIT Madras Online Degree Program. All rights reserved.
+      <div><h1>Ticket Show V2</h1></div>
+    </footer>
+  </div>
+</body>
+</html>

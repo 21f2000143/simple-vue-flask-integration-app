@@ -7,7 +7,7 @@ from sqlalchemy import desc
 import requests
 from datetime import datetime
 import numbers
-from time import perf_counter_ns
+
 # marshaling for venue
 show= {
     "show_id": fields.Integer,
@@ -204,108 +204,108 @@ class specificvenueApi(Resource):
         except requests.exceptions.RequestException as e:
             raise NetworkError(status_code=405, message="Error: {}".format(e))
         
-class venueApi(Resource):
-    # @auth_required('token')
-    def get(self):
-        try:
-            start=perf_counter_ns()
-            venues=venues=Venue.query.all()
-            stop= perf_counter_ns()
-            print("time taken", stop-start)
-            if venues:
-                datalist=[]
-                i=1
-                for venue in venues:
-                    data={}
-                    data["seq_no"]=i
-                    i=i+1
-                    data["venue_id"]=venue.venue_id
-                    data["venue_name"]=venue.venue_name
-                    data["venue_location"]=venue.venue_location
-                    data['shows']=[]
-                    for show in venue.shows:
-                        data1={}
-                        data1['seq_no']=i
-                        i=i+1
-                        data1["img_name"]=show.img_name
-                        data1["show_id"]=show.show_id
-                        data1["show_stime"]=show.show_stime.strftime("%H:%m")
-                        data1["show_etime"]=show.show_etime.strftime("%H:%m")
-                        data1["no_seats"]=(Venue_Shows.query.filter_by(venue_id=venue.venue_id, show_id=show.show_id).first()).no_seats
-                        data['shows'].append(data1)
-                    datalist.append(data)
-                return datalist
-            else:
-                raise NotFoundError(status_code=400)
-        except requests.exceptions.RequestException as e:
-            raise NetworkError(status_code=405, message="Error: {}".format(e))
+# class venueApi(Resource):
+#     # @auth_required('token')
+#     def get(self):
+#         try:
+#             start=perf_counter_ns()
+#             venues=get_value()
+#             stop= perf_counter_ns()
+#             print("time taken", stop-start)
+#             if venues:
+#                 datalist=[]
+#                 i=1
+#                 for venue in venues:
+#                     data={}
+#                     data["seq_no"]=i
+#                     i=i+1
+#                     data["venue_id"]=venue.venue_id
+#                     data["venue_name"]=venue.venue_name
+#                     data["venue_location"]=venue.venue_location
+#                     data['shows']=[]
+#                     for show in venue.shows:
+#                         data1={}
+#                         data1['seq_no']=i
+#                         i=i+1
+#                         data1["img_name"]=show.img_name
+#                         data1["show_id"]=show.show_id
+#                         data1["show_stime"]=show.show_stime.strftime("%H:%m")
+#                         data1["show_etime"]=show.show_etime.strftime("%H:%m")
+#                         data1["no_seats"]=(Venue_Shows.query.filter_by(venue_id=venue.venue_id, show_id=show.show_id).first()).no_seats
+#                         data['shows'].append(data1)
+#                     datalist.append(data)
+#                 return datalist
+#             else:
+#                 raise NotFoundError(status_code=400)
+#         except requests.exceptions.RequestException as e:
+#             raise NetworkError(status_code=405, message="Error: {}".format(e))
         
-    @marshal_with(venue) 
-    def put(self, venue_id):
-        venue = Venue.query.filter_by(venue_id=int(venue_id)).first()
-        if venue:
-            args=venue_parser.parse_args()
-            if "venue_name" in args:
-                venue.venue_name = args["venue_name"]
-            if "venue_place" in args:
-                venue.venue_place = args["venue_place"]
-            if "venue_capacity" in args:
-                venue.venue_capacity = args["venue_capacity"]
-            if "venue_location" in args:
-                venue.venue_location = args["venue_location"]
-            if "price_factor" in args:
-                venue.price_factor = args["price_factor"]
-            db.session.commit()
-            return venue
-        else:
-            raise NotFoundError(status_code=404)
+#     @marshal_with(venue) 
+#     def put(self, venue_id):
+#         venue = Venue.query.filter_by(venue_id=int(venue_id)).first()
+#         if venue:
+#             args=venue_parser.parse_args()
+#             if "venue_name" in args:
+#                 venue.venue_name = args["venue_name"]
+#             if "venue_place" in args:
+#                 venue.venue_place = args["venue_place"]
+#             if "venue_capacity" in args:
+#                 venue.venue_capacity = args["venue_capacity"]
+#             if "venue_location" in args:
+#                 venue.venue_location = args["venue_location"]
+#             if "price_factor" in args:
+#                 venue.price_factor = args["price_factor"]
+#             db.session.commit()
+#             return venue
+#         else:
+#             raise NotFoundError(status_code=404)
         
-    def delete(self, venue_id):
-        venue = Venue.query.filter_by(venue_id=venue_id).first()
-        if venue is None:
-            raise NotFoundError(status_code=400)            
-        else:
-            try:
-                for show in venue.shows:
-                    seat=Venue_Shows.query.filter_by(venue_id=venue_id, show_id=show.show_id).first()
-                    db.session.delete(seat)
-                    db.session.commit()
-                    db.session.delete(show)
-                    db.session.commit()
-                db.session.delete(venue)
-                db.session.commit()
-                return output_json(data={"message":"successfully deleted"}, code=200)
-            except requests.exceptions.RequestException as e:
-                db.session.rollback()
-                raise NetworkError(status_code=405, message="Error: {}".format(e))
+#     def delete(self, venue_id):
+#         venue = Venue.query.filter_by(venue_id=venue_id).first()
+#         if venue is None:
+#             raise NotFoundError(status_code=400)            
+#         else:
+#             try:
+#                 for show in venue.shows:
+#                     seat=Venue_Shows.query.filter_by(venue_id=venue_id, show_id=show.show_id).first()
+#                     db.session.delete(seat)
+#                     db.session.commit()
+#                     db.session.delete(show)
+#                     db.session.commit()
+#                 db.session.delete(venue)
+#                 db.session.commit()
+#                 return output_json(data={"message":"successfully deleted"}, code=200)
+#             except requests.exceptions.RequestException as e:
+#                 db.session.rollback()
+#                 raise NetworkError(status_code=405, message="Error: {}".format(e))
             
-    @marshal_with(venue)
-    def post(self):
-        args=venue_parser.parse_args()
-        venue_name=args.get("venue_name", None)
-        venue_place=args.get("venue_place", None)
-        venue_capacity=args.get("venue_capacity", None)
-        venue_location=args.get("venue_location", None)
-        price_factor=args.get("price_factor", None)
-        if price_factor is None:
-            price_factor=0
-        if venue_name is None:
-            raise NotFoundError(status_code=400)
-        elif venue_place is None:
-            raise NotFoundError(status_code=400)
-        elif venue_capacity is None:
-            raise NotFoundError(status_code=400)
-        elif venue_location is None:
-            raise NotFoundError(status_code=400)
-        else:
-            try:
-                venue=Venue(venue_name=venue_name, venue_place=venue_place, venue_capacity=venue_capacity, venue_location=venue_location, price_factor=price_factor)
-                db.session.add(venue)
-                db.session.commit()
-                return venue
-            except requests.exceptions.RequestException as e:
-                db.session.rollback()
-                raise NetworkError(status_code=405, message="Error: {}".format(e))    
+#     @marshal_with(venue)
+#     def post(self):
+#         args=venue_parser.parse_args()
+#         venue_name=args.get("venue_name", None)
+#         venue_place=args.get("venue_place", None)
+#         venue_capacity=args.get("venue_capacity", None)
+#         venue_location=args.get("venue_location", None)
+#         price_factor=args.get("price_factor", None)
+#         if price_factor is None:
+#             price_factor=0
+#         if venue_name is None:
+#             raise NotFoundError(status_code=400)
+#         elif venue_place is None:
+#             raise NotFoundError(status_code=400)
+#         elif venue_capacity is None:
+#             raise NotFoundError(status_code=400)
+#         elif venue_location is None:
+#             raise NotFoundError(status_code=400)
+#         else:
+#             try:
+#                 venue=Venue(venue_name=venue_name, venue_place=venue_place, venue_capacity=venue_capacity, venue_location=venue_location, price_factor=price_factor)
+#                 db.session.add(venue)
+#                 db.session.commit()
+#                 return venue
+#             except requests.exceptions.RequestException as e:
+#                 db.session.rollback()
+#                 raise NetworkError(status_code=405, message="Error: {}".format(e))    
 
 shows= {
     "show_id": fields.Integer,

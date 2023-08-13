@@ -82,7 +82,7 @@ celery.conf.beat_schedule = {
         'schedule': crontab(hour=21, minute=0),  # updating price factor in venue
     },
     'my_quick_check_task': {
-        'task': "application.tasks.dynamic_price_update",
+        'task': "application.tasks.daily_reminder_to_user",
         'schedule': crontab(minute='*/1'),  # Sending email and notification for inactive users
     },
     # Add more scheduled tasks as needed

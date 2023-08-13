@@ -7,8 +7,7 @@ from sqlalchemy import desc
 import requests
 from datetime import datetime
 import numbers
-
-
+from time import perf_counter_ns
 # marshaling for venue
 show= {
     "show_id": fields.Integer,
@@ -209,7 +208,10 @@ class venueApi(Resource):
     # @auth_required('token')
     def get(self):
         try:
-            venues=Venue.query.all()
+            start=perf_counter_ns()
+            venues=venues=Venue.query.all()
+            stop= perf_counter_ns()
+            print("time taken", stop-start)
             if venues:
                 datalist=[]
                 i=1
@@ -594,6 +596,7 @@ class topgenresapi(Resource):
                 raise NotFoundError(status_code=400)
         except requests.exceptions.RequestException as e:
             raise NetworkError(status_code=405, message="Error: {}".format(e))           
+
 
 # class ticketApi(Resource):
 #     @marshal_with(ticket_output)

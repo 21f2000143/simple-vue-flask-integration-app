@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, redirect, url_for
-from application.config import LocalDevelopmentConfig, StageConfig     
+from application.config import LocalDevelopmentConfig, StageConfig, TestingConfig     
 from application.database import db
 from application import workers
 from application.models import *
@@ -8,6 +8,8 @@ from flask_restful import Api
 from flask_security import Security, current_user, login_required, auth_required, hash_password, SQLAlchemySessionUserDatastore, UserDatastore
 from flask_sse import sse
 from flask_cors import CORS
+from flask_migrate import Migrate
+from flask_caching import Cache
 # from google.oauth2 import service_account
 # from googleapiclient.discovery import build
 
@@ -25,12 +27,15 @@ user_datastore = SQLAlchemySessionUserDatastore(db.session, User, Role)
 
 
 
-app, api, celery = None, None, None
+app, api, celery, cache = None, None, None, None
 def create_app():
     app = Flask(__name__, template_folder="templates")
     if os.getenv('ENV', "development")== "production":
         # app.logger.info("Currently no production is being setup")
         raise Exception("Currently no production config is setup.")
+    elif os.getenv('ENV', "development") == "testing":
+        app.logger.info("Starting testing.")
+        app.config.from_object(TestingConfig)
     elif os.getenv('ENV', "development") == "stage":
         app.logger.info("Staring stage.")
         app.config.from_object(StageConfig)
@@ -38,6 +43,7 @@ def create_app():
         # app.logger.info("Starting local development")
         app.config.from_object(LocalDevelopmentConfig)
     db.init_app(app)
+    migrate = Migrate(app, db)
     app.app_context().push()
     db.create_all()
     api=Api(app)
@@ -82,10 +88,12 @@ def create_app():
 
     celery.Task = workers.ContextTask
     app.app_context().push()
+    cache=Cache(app)
+    app.app_context().push()
     cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
-    return app, api, celery
+    return app, api, celery, cache
 
-app, api, celery = create_app()
+app, api, celery, cache = create_app()
 
 # # Load the Gmail API credentials from the JSON key file
 # credentials = service_account.Credentials.from_service_account_file(

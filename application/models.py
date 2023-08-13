@@ -58,6 +58,12 @@ class RolesUsers(db.Model):
     user_id = Column('user_id', Integer(), ForeignKey('user.id'))
     role_id = Column('role_id', Integer(), ForeignKey('role.id'))
 
+class ForMigrateTesting(db.Model):
+    __tablename__ = 'formigratetesting'
+    id = Column(Integer(), primary_key=True)
+    name = Column(String(255))
+    
+
 class TopThree(db.Model):
     __tablename__ = 'topthree'
     id = Column(Integer, primary_key=True, autoincrement=True)
